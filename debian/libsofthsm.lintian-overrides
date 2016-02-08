@@ -1,0 +1,2 @@
+libsofthsm: shlib-without-versioned-soname usr/lib/libsofthsm.so libsofthsm.so
+libsofthsm: postinst-must-call-ldconfig usr/lib/libsofthsm.so

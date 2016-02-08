@@ -1,0 +1,101 @@
+Source: softhsm
+Section: admin
+Priority: extra
+Maintainer: Ondřej Surý <ondrej@debian.org>
+Build-Depends: quilt (>= 0.46-7~),
+	       debhelper (>= 7.0.50~),
+	       autotools-dev,
+	       libbotan1.10-dev (>= 1.10.0-1~),
+	       libsqlite3-dev (>= 3.4.2),
+	       hardening-wrapper,
+	       autoconf,
+	       dh-autoreconf,
+	       automake,
+	       libtool
+Build-Conflicts: libbotan1.8-dev
+Standards-Version: 3.9.1
+Homepage: https://www.opendnssec.org/softhsm/
+Vcs-Browser: http://anonscm.debian.org/?p=pkg-nlnetlabs/softhsm.git
+Vcs-Git: git://anonscm.debian.org/pkg-nlnetlabs/softhsm.git
+
+Package: softhsm-common
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ucf
+Replaces: softhsm (<< 1.1.4-2)
+Conflicts: softhsm (<< 1.1.4-2)
+Description: a cryptographic store accessible through a PKCS #11
+ OpenDNSSEC is a complete DNSSEC zone signing system which is very
+ easy to use with stability and security in mind.  There are a lot of
+ details in signing zone files with DNSSEC and OpenDNSSEC covers most
+ of it.
+ .
+ SoftHSM is a software implementation of a generic cryptographic
+ device with a PKCS #11 Cryptographic Token Interface.
+ .
+ This package contains command line tools.
+
+Package: softhsm
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, softhsm-common, libsofthsm
+Description: a cryptographic store accessible through a PKCS #11
+ OpenDNSSEC is a complete DNSSEC zone signing system which is very
+ easy to use with stability and security in mind.  There are a lot of
+ details in signing zone files with DNSSEC and OpenDNSSEC covers most
+ of it.
+ .
+ SoftHSM is a software implementation of a generic cryptographic
+ device with a PKCS #11 Cryptographic Token Interface.
+ .
+ This package contains command line tools.
+
+Package: libsofthsm-dev
+Section: libdevel
+Architecture: any
+Depends: libsofthsm (= ${binary:Version}), ${misc:Depends}, softhsm-common
+Description: a cryptographic store accessible through a PKCS #11
+ OpenDNSSEC is a complete DNSSEC zone signing system which is very
+ easy to use with stability and security in mind.  There are a lot of
+ details in signing zone files with DNSSEC and OpenDNSSEC covers most
+ of it.
+ .
+ SoftHSM is a software implementation of a generic cryptographic
+ device with a PKCS #11 Cryptographic Token Interface.
+ .
+ This package contains development library.  You will need external
+ PKCS#11 header files.
+
+Package: libsofthsm
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, softhsm-common
+Recommends: softhsm
+Provides: libpkcs11
+Breaks: opendnssec-common (<< 1.3.5-1~)
+Description: a cryptographic store accessible through a PKCS #11
+ OpenDNSSEC is a complete DNSSEC zone signing system which is very
+ easy to use with stability and security in mind.  There are a lot of
+ details in signing zone files with DNSSEC and OpenDNSSEC covers most
+ of it.
+ .
+ SoftHSM is a software implementation of a generic cryptographic
+ device with a PKCS #11 Cryptographic Token Interface.
+ .
+ This package contains shared library.
+
+Package: softhsm-dbg
+Architecture: any
+Recommends: gdb
+Section: debug
+Priority: extra
+Depends: ${shlibs:Depends}, ${misc:Depends}, softhsm-common, libsofthsm
+Description: Debug symbols for SoftHSM
+ OpenDNSSEC is a complete DNSSEC zone signing system which is very
+ easy to use with stability and security in mind.  There are a lot of
+ details in signing zone files with DNSSEC and OpenDNSSEC covers most
+ of it.
+ .
+ SoftHSM is a software implementation of a generic cryptographic
+ device with a PKCS #11 Cryptographic Token Interface.
+ .
+ This package contains debugging symbols for SoftHSM needed for
+ properly debugging errors in SoftHSM with gdb.

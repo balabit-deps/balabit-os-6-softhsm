@@ -1,0 +1,21 @@
+--- softhsm.orig/m4/acx_64bit.m4
++++ softhsm/m4/acx_64bit.m4
+@@ -8,6 +8,10 @@ AC_DEFUN([ACX_64BIT],[
+ 	if test "x$enable_64bit" = "xyes"
+ 	then
+ 	        AC_MSG_CHECKING(if we can compile in 64-bit mode)
++                AC_RUN_IFELSE(
++                        [
++				AC_LANG_PROGRAM([],[return sizeof(void*) == 8 ? 0 : 1;])
++                        ], [], [
+ 	        tmp_CFLAGS=$CFLAGS
+ 	        CFLAGS="-m64"
+ 	        AC_RUN_IFELSE(
+@@ -24,6 +28,7 @@ AC_DEFUN([ACX_64BIT],[
+ 	        		CFLAGS=$tmp_CFLAGS
+ 	                ]
+ 	        )
++                ])
+ 	fi
+ 
+ ])

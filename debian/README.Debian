@@ -1,0 +1,8 @@
+softhsm for Debian
+------------------
+
+softhsm doesn't provide header files on it's own.  If you want to use
+libsofthsm you need to download PKCS#11 header files from RSA
+Laboratories or some more free replacement, f.e. from SCUTE project.
+
+ -- Ondřej Surý <ondrej@debian.org>, Tue, 26 Jan 2010 08:38:27 +0100

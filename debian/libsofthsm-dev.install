@@ -1,0 +1,2 @@
+debian/tmp/usr/lib/softhsm/lib*.a
+src/lib/cryptoki_compat/pkcs11.h /usr/include/softhsm/
